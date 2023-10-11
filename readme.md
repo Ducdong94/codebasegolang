@@ -123,8 +123,8 @@ func main() {
 Install dependencies
 
 ```bash
-go install github.com/swaggo/swag/cmd/swag@latest &&
-go get github.com/swaggo/echo-swagger
+go get github.com/swaggo/echo-swagger &&
+go install github.com/swaggo/swag/cmd/swag@latest
 ```
 
 Init swagger docs

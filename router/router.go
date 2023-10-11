@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 func New() *echo.Echo {
@@ -21,5 +22,6 @@ func New() *echo.Echo {
 		AllowMethods: []string{echo.GET, echo.HEAD, echo.PUT, echo.PATCH, echo.POST, echo.DELETE},
 	}))
 	e.Validator = NewValidator()
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	return e
 }

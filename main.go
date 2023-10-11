@@ -1,24 +1,34 @@
 package main
 
 import (
-	"codebase.sample/db"
 	_ "codebase.sample/docs"
 	"codebase.sample/handler"
-	"codebase.sample/repository"
 	"codebase.sample/router"
-	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
+// @title Swagger codebase golang
+// version 1.0
+// @description Codebase sample API
+// @title Codebase sample API
+
+// @host 127.0.0.1:8080
+// @BasePath /v1/api
+
+// @schemes http https
+// @produce application/json
+// @consumes application/json
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
+
 func main() {
+	// Init router
 	r := router.New()
-	r.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	db := db.InitConnection()
+	// Init handler
+	handler.NewHandler(r)
 
-	v1 := r.Group("/v1/api")
-
-	us := repository.NewUserRepository(db)
-	h := handler.NewHandler(us)
-	h.Register(v1)
+	// Start server
 	r.Logger.Fatal(r.Start(":8080"))
 }

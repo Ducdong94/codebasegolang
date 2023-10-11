@@ -8,7 +8,7 @@ import (
 )
 
 type User struct {
-	Id       primitive.ObjectID `json:"id,omitempty"`
+	Id       primitive.ObjectID `bson:"_id" json:"id,omitempty"`
 	Username string             `json:"name,omitempty" validate:"required"`
 	Email    string             `json:"email,omitempty" validate:"required"`
 	Password string             `json:"password,omitempty" validate:"required"`
@@ -17,7 +17,7 @@ type User struct {
 
 func (u *User) HashPassword(pwd string) (string, error) {
 	if len(pwd) == 0 {
-		return "", errors.New("Password should not be empty")
+		return "", errors.New("password should not be empty")
 	}
 
 	h, err := bcrypt.GenerateFromPassword([]byte(pwd), bcrypt.DefaultCost)

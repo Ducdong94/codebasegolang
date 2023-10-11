@@ -7,11 +7,9 @@ import (
 
 // Signup dto
 type UserRegisterRequest struct {
-	User struct {
 		Username string `json:"username" validate:"required"`
 		Email    string `json:"email" validate:"required"`
 		Password string `json:"password" validate:"required"`
-	} `json:"user"`
 }
 
 func (r *UserRegisterRequest) Bind(c echo.Context, u *model.User) error {
@@ -21,9 +19,9 @@ func (r *UserRegisterRequest) Bind(c echo.Context, u *model.User) error {
 	if err := c.Validate(r); err != nil {
 		return err
 	}
-	u.Username = r.User.Username
-	u.Email = r.User.Email
-	h, err := u.HashPassword(r.User.Password)
+	u.Username = r.Username
+	u.Email = r.Email
+	h, err := u.HashPassword(r.Password)
 	if err != nil {
 		return err
 	}
@@ -34,10 +32,8 @@ func (r *UserRegisterRequest) Bind(c echo.Context, u *model.User) error {
 // Login dto
 
 type UserLoginRequest struct {
-	User struct {
 		Username string `json:"username" validate:"required"`
 		Password string `json:"password" validate:"required"`
-	}
 }
 
 func (r *UserLoginRequest) Bind( c echo.Context) error  {
