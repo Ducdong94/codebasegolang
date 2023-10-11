@@ -1,4 +1,4 @@
-package ressponse
+package ressponse_dto
 
 import "codebase.sample/model"
 

@@ -17,3 +17,10 @@ func NewError(err error) Error {
 	}
 	return e
 }
+
+func AccessForbiden() Error {
+	e := Error{}
+	e.Errors = make(map[string]interface{})
+	e.Errors["body"] = "access forbiden"
+	return e
+}

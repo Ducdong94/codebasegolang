@@ -1,6 +1,8 @@
 package handler
 
-import "codebase.sample/service"
+import (
+	"codebase.sample/service"
+)
 
 type Handler struct {
 	UserService service.UserService

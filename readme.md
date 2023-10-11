@@ -1,6 +1,6 @@
-# ![Codebase sample](logo.png)
+# ![Codebase sample]
 
-> ### Golang/Echo codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+> ### Golang/Echo codebase containing CRUD, auth, advanced patterns, etc
 
 This codebase was created to demonstrate a fully fledged fullstack application built with **Golang/Echo** including CRUD operations, authentication, routing, pagination, and more.
 

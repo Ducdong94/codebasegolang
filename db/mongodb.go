@@ -17,8 +17,8 @@ var lock = &sync.Mutex{}
 var client *mongo.Client
 var database *mongo.Database
 
-func InitConnection() {
-	getInstance()
+func InitConnection() *mongo.Database {
+	return getInstance()
 }
 
 func getInstance() *mongo.Database {
